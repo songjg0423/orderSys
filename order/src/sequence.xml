@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="sequence">
+
+	<select id="getuserseq" resultClass="java.lang.Integer" parameterClass="java.util.Map">
+		select currentvalue+step from tbsequence where name=#name#
+    </select>
+    
+    <update id="updateuserseq" parameterClass="java.util.Map">
+        update tbsequence set currentvalue=currentvalue+step where name=#name#
+    </update>
+
+</sqlMap>

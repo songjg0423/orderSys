@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="configproperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+				<value>classpath:log4j.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="properties" ref="configproperties" />
+	</bean>
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${ibsdbDataSource.driverClassName}" />
+		<property name="url" value="${ibsdbDataSource.url}" />
+		<property name="username" value="${ibsdbDataSource.username}" />
+		<property name="password" value="${ibsdbDataSource.password}" />
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:sqlmap-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="accountDao" class="com.dao.Test">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="loginDao" class="com.dao.LoginDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="userDao" class="com.dao.UserDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="roomDao" class="com.dao.RoomDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="pageSize"><value>10</value></property>
+	</bean>
+	
+	<bean id="meetingDao" class="com.dao.MeetingDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="pageSize"><value>10</value></property>
+	</bean>
+	
+	<bean id="priceDao" class="com.dao.PriceDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="peopleDao" class="com.dao.PeopleDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="myTestDao" class="com.dao.MyTestDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="tcpServer" class="com.flyhawk.tcpip.TcpServerSocket">
+	    <property name="myTestDao" ref="myTestDao"></property>
+	</bean>
+</beans>

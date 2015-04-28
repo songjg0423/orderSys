@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver">
+	</bean>
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="helloWorld.do">helloWorldAction</prop>
+				<prop key="prelogin.do">preLoginAction</prop>
+				<prop key="login.do">loginAction</prop>
+				<prop key="prePwdModify.do">prePwdModifyAction</prop>
+				<prop key="pwdModify.do">pwdModifyAction</prop>
+				<prop key="meetingRoomQryPre.do">meetingRoomQryPreAction</prop>
+				<prop key="meetingRoomQry.do">meetingRoomQryAction</prop>
+				<prop key="meetingRoomAddPre.do">meetingRoomAddPreAction</prop>
+				<prop key="meetingRoomAdd.do">meetingRoomAddAction</prop>
+				<prop key="meetingRoomDel.do">meetingRoomDelAction</prop>
+				<prop key="meetingRoomModifyPre.do">meetingRoomModifyPreAction</prop>
+				<prop key="meetingRoomModify.do">meetingRoomModifyAction</prop>
+				<prop key="meetingAddPre.do">meetingAddPreAction</prop>
+				<prop key="availableRoomQry.do">availableRoomQryAction</prop>
+				<prop key="meetingBook.do">meetingBookAction</prop>
+				<prop key="meetingAdd.do">meetingAddAction</prop>
+				<prop key="meetingQryPre.do">meetingQryPreAction</prop>
+				<prop key="meetingQry.do">meetingQryAction</prop>
+				<prop key="meetingCancel.do">meetingCancelAction</prop>
+				<prop key="qryMeetingDetail.do">qryMeetingDetailAction</prop>
+				<prop key="changeRoom.do">changeRoomAction</prop>
+				<prop key="changeConfirm.do">changeConfirmAction</prop>
+				<prop key="peopleDelete.do">deletePeopleAction</prop>
+				<prop key="peopleAdd.do">addPeopleAction</prop>
+				<prop key="mytest.do">myTestAction</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="helloWorldAction" class="com.test.Hello">
+	    <property name="testDAO" ref="accountDao"></property>
+		<property name="viewPage">
+			<value>hello</value>
+		</property>
+	</bean>
+	
+	<bean id="preLoginAction" class="com.login.PreLogin">
+		<property name="viewPage">
+			<value>login/login</value>
+		</property>
+	</bean>
+	
+	<bean id="loginAction" class="com.login.Login">
+	    <property name="loginDao" ref="loginDao"></property>
+		<property name="success">
+			<value>main</value>
+		</property>
+		<property name="error">
+			<value>login/login</value>
+		</property>
+	</bean>
+	
+	<bean id="prePwdModifyAction" class="com.user.PreModifyPwd">
+		<property name="success"><value>user/preModifyPwd</value></property>
+	</bean>
+	
+	<bean id="pwdModifyAction" class="com.user.ModifyPwd">
+	    <property name="userDao" ref="userDao"></property>
+		<property name="success"><value>user/preModifyPwd</value></property>
+	</bean>
+	
+	<bean id="meetingRoomQryPreAction" class="com.user.PreModifyPwd">
+		<property name="success"><value>meetingRoom/meetingRoomQry</value></property>
+	</bean>
+	
+	<bean id="meetingRoomAddPreAction" class="com.user.PreModifyPwd">
+		<property name="success"><value>meetingRoom/meetingRoomAdd</value></property>
+	</bean>
+	
+	<bean id="meetingRoomAddAction" class="com.meetingroom.MeetingRoomAdd">
+	    <property name="roomDao" ref="roomDao"></property>
+		<property name="success"><value>meetingRoom/meetingRoomAddResult</value></property>
+		<property name="error"><value>meetingRoom/meetingRoomAdd</value></property>
+	</bean>
+	
+	<bean id="meetingRoomQryAction" class="com.meetingroom.MeetingRoomQry">
+	    <property name="roomDao" ref="roomDao"></property>
+		<property name="success"><value>meetingRoom/roomList</value></property>
+	</bean>
+	
+	<bean id="meetingRoomDelAction" class="com.meetingroom.MeetingRoomDel">
+	    <property name="roomDao" ref="roomDao"></property>
+	    <property name="success"><value>meetingRoom/empty</value></property>
+	</bean>
+	
+	<bean id="meetingRoomModifyPreAction" class="com.meetingroom.PreModifyRoom">
+	    <property name="roomDao" ref="roomDao"></property>
+		<property name="success"><value>meetingRoom/roomModify</value></property>
+	</bean>
+	
+	<bean id="meetingRoomModifyAction" class="com.meetingroom.MeetingRoomModify">
+	    <property name="roomDao" ref="roomDao"></property>
+	    <property name="success"><value>meetingRoom/roomModifyResult</value></property>
+	</bean>
+	
+	<bean id="meetingAddPreAction" class="com.user.PreModifyPwd">
+	    <property name="success"><value>meeting/meetingAdd</value></property>
+	</bean>
+	
+	<bean id="meetingQryPreAction" class="com.user.PreModifyPwd">
+	    <property name="success"><value>meeting/meetingQry</value></property>
+	</bean>
+	
+	<bean id="availableRoomQryAction" class="com.meeting.RoomQry">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/avaRoomList</value></property>
+	</bean>
+	
+	<bean id="meetingBookAction" class="com.meeting.MeetingBook">
+	    <property name="roomDao" ref="roomDao"></property>
+	    <property name="priceDao" ref="priceDao"></property>
+	    <property name="success"><value>meeting/meetingBook</value></property>
+	</bean>
+	
+	<bean id="meetingAddAction" class="com.meeting.MeetingAdd">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/meetingAddResult</value></property>
+	</bean>
+	
+	<bean id="meetingQryAction" class="com.meeting.MeetingQry">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/meetingList</value></property>
+	</bean>
+	<bean id="meetingCancelAction" class="com.meeting.MeetingCancel">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/empty</value></property>
+	</bean>
+	<bean id="qryMeetingDetailAction" class="com.meeting.MeetingDetailQry">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/meetingDetail</value></property>
+	</bean>
+	<bean id="changeRoomAction" class="com.meeting.MeetingRoomChange">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="success"><value>meeting/meetingRoomChangePre</value></property>
+	</bean>
+	<bean id="changeConfirmAction" class="com.meeting.MeetingRoomChangeConfirm">
+	    <property name="meetingDao" ref="meetingDao"></property>
+	    <property name="roomDao" ref="roomDao"></property>
+	    <property name="priceDao" ref="priceDao"></property>
+	    <property name="success"><value>meeting/meetingRoomChangeResult</value></property>
+	</bean>
+	<bean id="deletePeopleAction" class="com.people.PeopleDelete">
+	    <property name="peopleDao" ref="peopleDao"></property>
+	    <property name="success"><value>meeting/empty</value></property>
+	</bean>
+	
+	<bean id="addPeopleAction" class="com.people.PeopleAdd">
+	    <property name="peopleDao" ref="peopleDao"></property>
+	    <property name="success"><value>meeting/empty</value></property>
+	</bean>
+	
+	<bean id="myTestAction" class="com.people.MyTest">
+	    <property name="myTestDao" ref="myTestDao"></property>
+	    <property name="success"><value>mytest</value></property>
+	</bean>
+</beans>
