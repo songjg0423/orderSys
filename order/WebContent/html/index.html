@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="zh-cn">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" CONTENT="IE=edge">
+    <meta name="viewport" content="width=device-width, initail-sacle=1">
+
+    <link href="/order/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/order/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/order/js/angular.min.js" language="javascript" ></script>
+    <script src="/order/js/productControl.js" language="JavaScript"></script>
+
+    <title></title>
+</head>
+<body ng-controller="ProductCtrl">
+<div class="panel-title title">欢迎选择苏妈妈!</div>
+<div class="container" ng-show="page == 1">
+    <div class="subtitle">私房小炒双拼</div>
+
+    <div ng-repeat="Product in productList" >
+    <div ng-class="(Product.checked && ProductClassChecked) || ProductClass" >
+        <div class="productcheck"><input type="checkbox" ng-model="Product.checked" ng-change="selectProduct(Product)" id="{{Product.productId}}"/><label for="{{Product.productId}}" style="font-weight:normal">{{Product.productName}}</label></div>
+        <div class="prodprice">{{Product.productPrice}}</div>
+        <div style="height: 10px"></div>
+        <div class="productremark">送米饭</div>
+    </div>
+    <div ng-class="(Product.checked && productbuyShow) || productbuy"><div class="productcal paddingright" ng-click="subtractCount(Product)">-</div><div class="productcount">{{Product.productCount}}</div><div class="productcal paddingleft" ng-click="addCount(Product)">+</div></div>
+
+    </div>
+	<div style="text-align: center;padding-top: 10px"><input type="button" value="下一步" ng-click="nextStep()"></div>
+
+</div>
+
+<div class="container" ng-show="page == 2">
+	<div class="subtitle">您的订单如下</div>
+	<div ng-repeat="Product in productList" >
+    <div ng-show="Product.checked">
+        
+    </div>
+	</div>
+</div>
+
+</body>
+</html>
