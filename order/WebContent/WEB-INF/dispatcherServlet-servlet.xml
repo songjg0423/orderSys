@@ -8,39 +8,51 @@
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="helloWorld.do">helloWorldAction</prop>
-				<prop key="prelogin.do">preLoginAction</prop>
-				<prop key="login.do">loginAction</prop>
-				<prop key="prePwdModify.do">prePwdModifyAction</prop>
-				<prop key="pwdModify.do">pwdModifyAction</prop>
-				<prop key="meetingRoomQryPre.do">meetingRoomQryPreAction</prop>
-				<prop key="meetingRoomQry.do">meetingRoomQryAction</prop>
-				<prop key="meetingRoomAddPre.do">meetingRoomAddPreAction</prop>
-				<prop key="meetingRoomAdd.do">meetingRoomAddAction</prop>
-				<prop key="meetingRoomDel.do">meetingRoomDelAction</prop>
-				<prop key="meetingRoomModifyPre.do">meetingRoomModifyPreAction</prop>
-				<prop key="meetingRoomModify.do">meetingRoomModifyAction</prop>
-				<prop key="meetingAddPre.do">meetingAddPreAction</prop>
-				<prop key="availableRoomQry.do">availableRoomQryAction</prop>
-				<prop key="meetingBook.do">meetingBookAction</prop>
-				<prop key="meetingAdd.do">meetingAddAction</prop>
-				<prop key="meetingQryPre.do">meetingQryPreAction</prop>
-				<prop key="meetingQry.do">meetingQryAction</prop>
-				<prop key="meetingCancel.do">meetingCancelAction</prop>
-				<prop key="qryMeetingDetail.do">qryMeetingDetailAction</prop>
-				<prop key="changeRoom.do">changeRoomAction</prop>
-				<prop key="changeConfirm.do">changeConfirmAction</prop>
-				<prop key="peopleDelete.do">deletePeopleAction</prop>
-				<prop key="peopleAdd.do">addPeopleAction</prop>
-				<prop key="mytest.do">myTestAction</prop>
+				<prop key="access.do">AccessAction</prop>
 			</props>
 		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="signCheckIntercepter" />
+			</list>
+		</property>
 	</bean>
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
+	<bean id="signCheckIntercepter" class="com.intercepter.SignCheckIntercepter">
+		<property name="token" value="ordersys" />
 	</bean>
+	
+	<bean id="AccessAction" class="com.action.AccessAction">
+	</bean>
+
+	<bean id="jsonRequestMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="ProductListQry.do">ProductListQryAction</prop>
+			</props>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="wechatBrowserReqIntercepter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="ProductListQryAction" class="com.action.ProductListQryAction">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="wechatBrowserReqIntercepter" class="com.intercepter.WechatBrowserReqIntercepter">
+	</bean>
+
+
+
+
+
+
+
+
+
+
+
 
 	<bean id="helloWorldAction" class="com.test.Hello">
 	    <property name="testDAO" ref="accountDao"></property>
@@ -163,9 +175,5 @@
 	    <property name="peopleDao" ref="peopleDao"></property>
 	    <property name="success"><value>meeting/empty</value></property>
 	</bean>
-	
-	<bean id="myTestAction" class="com.people.MyTest">
-	    <property name="myTestDao" ref="myTestDao"></property>
-	    <property name="success"><value>mytest</value></property>
-	</bean>
+
 </beans>

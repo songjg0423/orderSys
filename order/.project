@@ -3,7 +3,6 @@
 	<name>order</name>
 	<comment></comment>
 	<projects>
-		<project>spring-webmvc-portlet</project>
 		<project>spring-context</project>
 		<project>spring-context-support</project>
 		<project>spring-aop</project>

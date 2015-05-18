@@ -1,358 +1,86 @@
-/* css for html tags */
-html {
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-x: auto !important;
-}
-
-body {
-    font-family: '宋体', "Times New Roman", Times, serif;
-    font-size: 13px;
-    color: #222222;
-    margin: 0px;
-    padding: 0px;
-    text-align: center;
-   padding-bottom: 30px;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-	/*background-style.csscolor:#F0E68C;*/
-}
-
-div {
-    BORDER-TOP-WIDTH: 0px;
-    PADDING-RIGHT: 0px;
-    PADDING-LEFT: 0px;
-    BORDER-LEFT-WIDTH: 0px;
-    BORDER-BOTTOM-WIDTH: 0px;
-    PADDING-BOTTOM: 0px;
-    MARGIN: 0px;
-    PADDING-TOP: 0px;
-    BORDER-RIGHT-WIDTH: 0px
-}
-
-form {
-    BORDER-TOP-WIDTH: 0px;
-    PADDING-RIGHT: 0px;
-    PADDING-LEFT: 0px;
-    BORDER-LEFT-WIDTH: 0px;
-    BORDER-BOTTOM-WIDTH: 0px;
-    PADDING-BOTTOM: 0px;
-    MARGIN: 0px;
-    PADDING-TOP: 0px;
-    BORDER-RIGHT-WIDTH: 0px
-}
-
-img {
-    BORDER-TOP-WIDTH: 0px;
-    PADDING-RIGHT: 0px;
-    PADDING-LEFT: 0px;
-    BORDER-LEFT-WIDTH: 0px;
-    BORDER-BOTTOM-WIDTH: 0px;
-    PADDING-BOTTOM: 0px;
-    MARGIN: 0px;
-    PADDING-TOP: 0px;
-    BORDER-RIGHT-WIDTH: 0px
-}
-
-ul {
-    BORDER-TOP-WIDTH: 0px;
-    PADDING-RIGHT: 0px;
-    PADDING-LEFT: 0px;
-    BORDER-LEFT-WIDTH: 0px;
-    BORDER-BOTTOM-WIDTH: 0px;
-    PADDING-BOTTOM: 0px;
-    MARGIN: 0px;
-    PADDING-TOP: 0px;
-    BORDER-RIGHT-WIDTH: 0px
-}
-
-li {
-    BORDER-TOP-WIDTH: 0px;
-    PADDING-RIGHT: 0px;
-    PADDING-LEFT: 0px;
-    BORDER-LEFT-WIDTH: 0px;
-    BORDER-BOTTOM-WIDTH: 0px;
-    PADDING-BOTTOM: 0px;
-    MARGIN: 0px;
-    PADDING-TOP: 0px;
-    BORDER-RIGHT-WIDTH: 0px
-}
-
-a {
-    color: #205AA7;
-    text-decoration: none;
-}
-
-a:link {
-    color: #205AA7;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #205AA7;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #205AA7;
-    text-decoration: underline;
-}
-
-h1 {
-    font-family: "宋体";
-    letter-spacing: 0.5pt;
-}
-
-h2 {
-    font-size: 120%;
-    color: #FA5A06;
-}
-
-h6 {
-    FONT: bold 13px '宋体';
-    color: #205AA7;
-    text-align: left;
-    padding-left: 10px;
-}
-
-td {
-    FONT: normal 13px "宋体";
-}
-
-th {
-    FONT: normal 13px "宋体";
-}
-
-/* css for form's inputs */
-input {
-    height: 22px;
-    border-top: 1px solid #999999;
-    border-bottom: 1px solid #999999;
-    border-left: 1px solid #999999;
-    border-right: 1px solid #999999;
-    font-size: 13px;
-    padding-top: 1px;
-}
-
-textarea {
-    border-top: 1px solid #999999;
-    border-bottom: 1px solid #999999;
-    border-left: 1px solid #999999;
-    border-right: 1px solid #999999;
-    font-size: 14px;
-    padding-top: 2px;
-}
-
-/* common css */
-.buttonSpacer {
-border-top:1px solid transparent !important;
-margin-top:-1px !important;
-border-top:0;
-margin-top:0;
-clear:both;
-visibility:hidden;
-display: inline;
-width: 100px;
-}
-
-/* css for submit table */
-.submitTable {
-    font-size: 13px;
-    clear: both;
-    border-collapse: collapse;
-    border-bottom: 1px solid #ccc;
-}
-
-.submitTable a {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.submitTable a:link {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.submitTable a:visited {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.submitTable a:hover {
-    color: #E33539;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.submitTable .tdTitle {
-    background: #D6E5F8;
-    font: normal 13px "宋体";
-    height: 25px;
-    text-align: left;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-}
-
-.submitTable .tdValue {
-    color: #000000;
-    height: 25px;
-    text-align: left;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    background-color: #FFFFFF;
-}
-
-.submitTable .tdValueError {
-    color: #000000;
-    height: 25px;
-    text-align: left;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    background-color: #FFCCFF;
-}
-
-.mainTitle {
-	font-family: "宋体";
-	font-size: 18px;
-}
-
-
-.subTitle {
-	font-size: 14px;
-	color: #336600;
-	background-color: #F0F0F0;
-	text-indent: 40px;
-}
-
-.errors{
+.title {
     color: red;
-    height: 25px;
-    text-align: left;
-	vertical-align:middle;
-    padding-left: 5px;
-    padding-top:5px;
-    padding-bottom:5px;
-    margin-bottom:5px;
-    background-color: #FFFFFF;
+    font-size: 24px;
+    border: 1px solid lightgray;
+    padding-left: 15px;
 }
 
-.submitButton {
-	border-top-width: 1px;
-	border-right-width: 1px;
-	border-bottom-width: 1px;
-	border-left-width: 1px;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
+.subtitle {
+    color: darkred;
+    font-size: 20px;
+    border-bottom: 2px solid darkred;
+    padding-top: 20px;
+    padding-bottom: 8px;
 }
 
-.pagesTable {
-    clear: both;
-    border-collapse: collapse;
+.product {
+    padding-top: 15px;
+    border-bottom: 1px solid lightgray;
 }
 
-.pagesTable .xxx{
-    height: 18px;
-    text-align: left;
+.productchecked {
+    padding-top: 15px;
+    border-bottom: 1px solid lightgray;
+    background-color: lightgray;
 }
 
-.pagesTable .yyy{
-    height: 18px;
-    text-align: left;
+.productcheck {
+    color: black;
+    font-size: 18px;
+    padding-top: 15px;
+    display: inline;
+}
+.prodname {
+    color: black;
+    font-size: 18px;
+    padding-top: 15px;
+    display: inline;
+}
+
+.prodprice {
+    color: black;
+    font-size: 18px;
+    text-align: right;
+    display: inline;
+    float: right;
+}
+
+.productremark {
+    color: black;
+    padding-top: 10px;
+    display: inline;
+    margin-bottom: 1px;
+}
+
+.productbuy {
+    width: 100%;
+    text-align: right;
+    display: none;
+    border-bottom: 1px solid lightgray;
+}
+
+.productbuyShow {
+    width: 100%;
+    text-align: right;
+    display: block;
+    border-bottom: 1px solid lightgray;
+}
+
+.productcal {
+    display: inline;
+    font-size: 40px;
+}
+.productcount {
+    display: inline;
+    font-size: 40px;
     padding-left: 10px;
-	width: 25px;
+    padding-right: 10px;
 }
 
-.pagesInfo {
-	font-size: 12px;
-	display: inline;
+.paddingleft {
+    padding-left: 0px;
 }
 
-.pagesLinks {
-	font-size: 12px;
-	display: inline;
-}
-
-/* listTable */
-.listTable {
-    font-size: 13px;
-    clear: both;
-    border-collapse: collapse;
-    border-bottom: 1px solid #ccc;
-}
-
-.listTable a {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.listTable a:link {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.listTable a:visited {
-    color: #6D6D00;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.listTable a:hover {
-    color: #E33539;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.listTable .tdTitle {
-    background: #D6E5F8;
-    font: normal 13px "宋体";
-    height: 18px;
-    text-align: center;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-}
-
-.listTable .tdValue {
-    color: #000000;
-    height: 18px;
-    text-align: center;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    background-color: #FFFFFF;
-}
-.listTable .tdValueLeft {
-    color: #000000;
-    height: 18px;
-    text-align: left;
-    padding-left: 10px;
-    border: 1px solid #ccc;
-    background-color: #FFFFFF;
-}
-
-.Title{
-	font-size: 14px;
-	color: #336600;
-	width: 100%;
-	top: 0px;
-	height:30px;
-	font-weight: bold;
-	vertical-align:middle;
-	padding-left:20px;
-	padding-top:7px;
-	border-bottom-width: 2px;
-	border-bottom-style: solid;
-	border-bottom-color: #D0E4E3;
-	background-image: url(/mweb/images/titlearrow.gif);
-	background-repeat: no-repeat;
-	background-position: 20px center;
-	text-align: left;
-	text-indent: 20px;
-    margin-bottom:10px;
+.paddingright {
+    padding-right: 0px;
 }

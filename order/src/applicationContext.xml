@@ -31,6 +31,29 @@
 		<property name="configLocation" value="classpath:sqlmap-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<import resource="classpath:view.xml"/>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<bean id="accountDao" class="com.dao.Test">
 		<property name="sqlMapClient" ref="sqlMapClient" />
@@ -62,11 +85,4 @@
 		<property name="sqlMapClient" ref="sqlMapClient" />
 	</bean>
 	
-	<bean id="myTestDao" class="com.dao.MyTestDao">
-		<property name="sqlMapClient" ref="sqlMapClient" />
-	</bean>
-	
-	<bean id="tcpServer" class="com.flyhawk.tcpip.TcpServerSocket">
-	    <property name="myTestDao" ref="myTestDao"></property>
-	</bean>
 </beans>
