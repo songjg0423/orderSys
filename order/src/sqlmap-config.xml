@@ -2,5 +2,4 @@
 <!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0/" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
     <sqlMap resource="account.xml"></sqlMap>
-    <sqlMap resource="sequence.xml"></sqlMap>
 </sqlMapConfig>

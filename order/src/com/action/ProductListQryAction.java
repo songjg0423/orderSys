@@ -30,10 +30,8 @@ public class ProductListQryAction implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		/*String code = request.getAttribute("code").toString();
+		String code = request.getAttribute("code").toString();
 		String openid = this.wechatService.getAccessToken(code);
-		System.out.println(openid);*/
-		String openid="oqQqVuLZrkv-T2KuLj-Q6Pc7NK_Q";
 		
 		request.getSession().setAttribute("OpenId", openid);
 		List<Map> productList = this.sqlMapClient.queryForList("qryProductList");
