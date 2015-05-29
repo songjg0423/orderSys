@@ -1,6 +1,5 @@
 package com.util;
 
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,8 +10,6 @@ import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
 public class Util {
-	
-	private static Map map = new HashMap();
 	
 	public static Map parseXml(String xml){
 		try {
@@ -32,13 +29,6 @@ public class Util {
 		
 		return null;
 	}
-	
-	public static void put(InputStream in){
-		map.put("1", in);
-	}
-	
-	public static InputStream get(){
-		return (InputStream)map.get("1");
-	}
+
 
 }

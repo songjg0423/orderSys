@@ -6,10 +6,44 @@
 		<result property="productName" column="PRODUCTNAME" jdbcType="VARCHAR"/>
 		<result property="productPrice" column="PRODUCTPRICE" jdbcType="DECIMAL"/>
 	</resultMap>
+	
+	<resultMap id="queryCifSeqByCifIdResult" class="java.util.HashMap">
+		<result property="CifSeq" column="CIFSEQ" jdbcType="int"/>
+		<result property="Name" column="CIFNAME" jdbcType="VARCHAR"/>
+		<result property="MobilePhone" column="PHONE" jdbcType="VARCHAR"/>
+		<result property="Address" column="ADDRESS" jdbcType="VARCHAR"/>
+	</resultMap>
 
 	<select id="qryProductList" resultMap="qryProductListResult" parameterClass="java.util.Map">
 		SELECT PRODUCTSEQ AS PRODUCTID,PRODUCTNAME,PRODUCTPRICE FROM product
     </select>
+    
+    <select id="queryCifSeqByCifId" parameterClass="java.lang.String" resultMap="queryCifSeqByCifIdResult">
+    	SELECT cifSeq,cifName,phone,address FROM cifinfo WHERE cifId=#value#
+    </select>
+    
+    <insert id="insertCifInfo">
+    	INSERT INTO cifinfo (cifId,cifName,phone,cifTtype,ciflevel,cifstate,registerDate,address,opentime)
+    	VALUES (#CifId#,#Name#,#MobilePhone#,#CifType#,#CifLevel#,#CifState#,CURDATE(),#Address#,CURTIME())
+    </insert>
+    
+    <update id="updateCifInfo" parameterClass="java.util.HashMap">
+    	update cifinfo set phone=#MobilePhone#,address=#Address#,cifName=#Name# where cifid=#CifId#
+    </update>
+    
+    <insert id="insertOrderInfo">
+    	INSERT INTO orderinfo (cifseq,trsdate,trstime,addres,phone,orderState,amount) values 
+    	(#CifSeq#,CURDATE(),CURTIME(),#Address#,#Phone#,#OrderState#,#TotalAmount#)
+    </insert>
+    
+    <select id="qeuryCurrentOrderSeq" resultClass="java.lang.Integer">
+    	SELECT LAST_INSERT_ID()
+    </select>
+    
+    <insert id="insertOrderDetail" parameterClass="java.util.HashMap">
+    	INSERT INTO orderdetail (jnlno,subjnlno,ProductSeq,productprice,productCount) values 
+    	(#JnlNo#,#SubJnlNo#,#productId#,#productPrice#,#productCount#)
+    </insert>
     
     
 </sqlMap>

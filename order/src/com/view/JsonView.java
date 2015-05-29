@@ -8,7 +8,10 @@ public class JsonView extends MappingJacksonJsonView {
 	
 	protected Object filterModel(Map<String, Object> model) {
 		Map result = (Map)model.get("Json");
-		result.put("ReturnCode", "000000");
+		if (!result.containsKey("ReturnCode")) {
+			result.put("ReturnCode", "000000");
+		}
+		
 		return result;
 	}
 

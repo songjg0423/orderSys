@@ -56,7 +56,7 @@ public class AccessAction implements Controller {
 		sb.append("</MsgType>");
 		
 		sb.append("<Content>");
-		sb.append("http://songjg0423.xicp.net/order1/html/index.html");
+		sb.append("http://songjg0423.xicp.net/order/html/index.html");
 		sb.append("</Content>");
 		sb.append("</xml>");
 		

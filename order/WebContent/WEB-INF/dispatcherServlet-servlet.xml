@@ -29,18 +29,38 @@
 		<property name="mappings">
 			<props>
 				<prop key="ProductListQry.do">ProductListQryAction</prop>
+				<prop key="SubmitOrder.do">SubmitOrderAction</prop>
 			</props>
 		</property>
 		<property name="interceptors">
 			<list>
 				<ref bean="wechatBrowserReqIntercepter" />
+				<ref bean="jsonParseIntercepter" />
 			</list>
 		</property>
 	</bean>
 	<bean id="ProductListQryAction" class="com.action.ProductListQryAction">
 		<property name="sqlMapClient" ref="sqlMapClient" />
+		<property name="wechatService" ref="wechatService"></property>
 	</bean>
+	
+	<bean id="SubmitOrderAction" class="com.action.SubmitOrderAction">
+		<property name="sqlMap" ref="sqlMapClientTemplate" />
+		<property name="trsTemplate" ref="trsTemplate" />
+	</bean>
+	<bean id="wechatService" class="com.wechat.WechatServiceImpl">
+		<property name="appID" value="wx546b0c5bc51af2f5"></property>
+		<property name="appSecret" value="0dc406973733035b570948b0144a4b0f"></property>
+	</bean>
+	
 	<bean id="wechatBrowserReqIntercepter" class="com.intercepter.WechatBrowserReqIntercepter">
+	</bean>
+	
+	<bean id="jsonParseIntercepter" class="com.intercepter.JsonParseIntercepter">
+	</bean>
+	
+	<bean id="defaultHandlerExceptionResolver" class="com.exception.DefaultHandlerExceptionResolver">
+		<property name="messageSource" ref="messageSource"></property>
 	</bean>
 
 
