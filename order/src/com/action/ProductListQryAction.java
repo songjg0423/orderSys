@@ -1,5 +1,6 @@
 package com.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,13 +31,22 @@ public class ProductListQryAction implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		String code = request.getAttribute("code").toString();
-		String openid = this.wechatService.getAccessToken(code);
+		//String code = request.getAttribute("code").toString();
+		String openid = "oqQqVuLZrkv-T2KuLj-Q6Pc7NK_Q";//this.wechatService.getAccessToken(code);
 		
 		request.getSession().setAttribute("OpenId", openid);
-		List<Map> productList = this.sqlMapClient.queryForList("qryProductList");
+		List<Map> productTypes = this.sqlMapClient.queryForList("qryProductTypeList");
+		List resultList = new ArrayList();
+		for (Map productType : productTypes) {
+			List<Map> productList = this.sqlMapClient.queryForList("qryProductList", productType.get("TypeSeq").toString());
+			if (productList != null && !productList.isEmpty()) {
+				productType.put("ProductList", productList);
+				resultList.add(productType);
+			}
+		}
+		
 		Map map = new HashMap();
-		map.put("ProductList", productList);
+		map.put("ProductTypeList", resultList);
 		
 		Map cifInfo = (Map)this.sqlMapClient.queryForObject("queryCifSeqByCifId", openid);
 		if (cifInfo != null) {

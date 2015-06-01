@@ -10,15 +10,22 @@
 <link href="/order/css/style.css" rel="stylesheet" type="text/css">
 <script src="/order/js/angular.min.js" language="javascript"></script>
 <script src="/order/js/productControl.js" language="JavaScript"></script>
-
+<style type="text/css">
+.result {
+	padding-top: 30px;
+	text-align: center;
+	font-size: 25px;
+}
+</style>
 <title></title>
 </head>
 <body ng-controller="ProductCtrl">
 	<div class="panel-title title">欢迎选择苏妈妈!</div>
 	<div class="container" ng-show="page == 1">
-		<div class="subtitle">请选择餐品</div>
-
-		<div ng-repeat="Product in productList">
+	<div ng-repeat="ProductType in ProductTypeList">
+		<div class="subtitle">{{ProductType.TypeName}}</div>
+		
+		<div ng-repeat="Product in ProductType.ProductList">
 			<div
 				ng-class="(Product.checked && ProductClassChecked) || ProductClass">
 				<div class="productcheck">
@@ -28,7 +35,6 @@
 				</div>
 				<div class="prodprice">{{Product.productPrice}}</div>
 				<div style="height: 10px"></div>
-				<!-- <div class="productremark">送米饭</div> -->
 			</div>
 			<div ng-class="(Product.checked && productbuyShow) || productbuy">
 				<div class="productcal paddingright"
@@ -38,6 +44,8 @@
 			</div>
 
 		</div>
+	</div>
+		
 		<div style="text-align: center; padding-top: 10px"
 			ng-show="selectCount > 0">
 			<input type="button" value="下一步" ng-click="nextStep()">
@@ -47,7 +55,8 @@
 
 	<div class="container" ng-show="page == 2">
 		<div class="subtitle">您的订单如下</div>
-		<div ng-repeat="Product in productList">
+		<div ng-repeat="ProductType in ProductTypeList">
+		<div ng-repeat="Product in ProductType.ProductList">
 			<div ng-show="Product.checked" class="divbottom">
 				<div class="row selectedProduct">
 					<div class="col-xs-5 col-sm-5 ">{{Product.productName}}</div>
@@ -62,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-
+		</div>
 
 		<div class="row">
 			<div class="col-xs-12 alignright">共计：{{TotalPrice | currency : '￥'}}</div>
@@ -110,7 +119,7 @@
 	
 	<div class="container" ng-show="page == 3">
 		<div class="row">
-			<div class="col-xs-12">下单成功</div>
+			<div class="col-xs-12 result">下单成功,请您耐心等待。</div>
 		</div>
 	</div>
 

@@ -14,8 +14,8 @@
 		<result property="Address" column="ADDRESS" jdbcType="VARCHAR"/>
 	</resultMap>
 
-	<select id="qryProductList" resultMap="qryProductListResult" parameterClass="java.util.Map">
-		SELECT PRODUCTSEQ AS PRODUCTID,PRODUCTNAME,PRODUCTPRICE FROM product
+	<select id="qryProductList" resultMap="qryProductListResult" parameterClass="java.lang.String">
+		SELECT PRODUCTSEQ AS PRODUCTID,PRODUCTNAME,PRODUCTPRICE FROM product where productType=#value#
     </select>
     
     <select id="queryCifSeqByCifId" parameterClass="java.lang.String" resultMap="queryCifSeqByCifIdResult">
@@ -45,5 +45,24 @@
     	(#JnlNo#,#SubJnlNo#,#productId#,#productPrice#,#productCount#)
     </insert>
     
+    <select id="qryProductTypeList" resultClass="java.util.HashMap">
+    	select TypeSeq,TypeName from producttype
+    </select>
+    
+    <select id="qryOrderList" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+    	select b.jnlno,a.cifseq,b.trsdate,b.trstime,b.addres,b.phone,b.orderstate,b.amount 
+    	from cifinfo a,orderinfo b where a.cifseq=b.cifseq and a.cifid=#OpenId# limit #StartNum#,#PageSize#
+    </select>
+    
+    <select id="qryOrderDetail" parameterClass="java.lang.Integer" resultClass="java.util.HashMap">
+    	select b.productName,a.productprice,a.productCount 
+    	from orderdetail a,product b 
+    	where a.ProductSeq=b.productSeq and jnlno=#value# 
+    </select>
+    
+    <select id="qryOrderCount" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+    	select count(1) 
+    	from cifinfo a,orderinfo b where a.cifseq=b.cifseq and a.cifid=#value#
+    </select>
     
 </sqlMap>

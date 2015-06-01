@@ -11,7 +11,7 @@ public class JsonView extends MappingJacksonJsonView {
 		if (!result.containsKey("ReturnCode")) {
 			result.put("ReturnCode", "000000");
 		}
-		
+		System.out.println(result);
 		return result;
 	}
 

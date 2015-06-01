@@ -115,4 +115,51 @@
     overflow:hidden;
 }
 
+.result {
+	padding-top: 30px;
+	text-align: center;
+	font-size: 30px;
+}
 
+.pop-box {
+border: 2px solid #009900;
+background-color:white;
+line-height: 25px;
+font-size: 13px;
+font-weight: bold;
+z-index:9999;
+width: 70%;
+height: 70%;
+margin-left:15%!important;/*FF IE7 half of its width */
+margin-right:15%!important;
+margin-top:10%!important;/*FF IE7 half of its height*/
+position:fixed!important;/*FF IE7*/
+position:absolute;/*IE6*/
+} 
+
+.mask {   
+            color:lightgrey;
+            background-color:lightgrey;
+            position:absolute;
+            top:0px;
+            left:0px;
+            filter: Alpha(Opacity=60);
+            width: 100%;
+            height: 100%;
+            z-index: 9998;
+            opacity: 0.50;
+            position:fixed!important;/*FF IE7*/
+        }
+
+.leftpadding3 {
+	padding-left: 3px;
+}
+
+.rightpadding3 {
+	padding-right: 3px;
+}
+
+.bothmargin0 {
+	margin-left: 0;
+	margin-right: 0;
+}

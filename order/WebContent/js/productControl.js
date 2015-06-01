@@ -27,7 +27,7 @@ myApp.controller('ProductCtrl', function($scope, $http) {
     	if (data.ReturnCode != '000000') {
     		alert(data.RetMessage);
     	} else {
-    		$scope.productList = data.ProductList;
+    		$scope.ProductTypeList = data.ProductTypeList;
     		$scope.Name = data.Name;
     		$scope.Address = data.Address;
     		$scope.MobilePhone = Number(data.MobilePhone);
@@ -70,12 +70,18 @@ myApp.controller('ProductCtrl', function($scope, $http) {
     
     $scope.postOrder = function() {
     	var selectedProducts = [];
-    	var products = $scope.productList;
-    	for (var i = 0; i < products.length; i++) {
-    		if (products[i].checked) {
-    			selectedProducts.push(products[i]);
+    	
+    	var productTypes = $scope.ProductTypeList;
+    	for (var i = 0; i < productTypes.length; i++) {
+    		var productType = productTypes[i];
+    		var products = productType.ProductList;
+    		for (var j = 0; j < products.length; j++) {
+    			if (products[i].checked) {
+        			selectedProducts.push(products[i]);
+        		}
     		}
     	}
+    	
     	var data = {
     			"Name":$scope.Name,
     			"MobilePhone":$scope.MobilePhone,
