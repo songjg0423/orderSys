@@ -45,7 +45,6 @@ public class JsonParseIntercepter implements HandlerInterceptor {
 				List list = objectMapper.readValue(jsonStr, List.class);
 				request.setAttribute("List", list);
 			} else {
-				System.out.println(new Date());
 				Map map = objectMapper.readValue(jsonStr, Map.class);
 				if (map != null) {
 					Iterator it = map.keySet().iterator();
