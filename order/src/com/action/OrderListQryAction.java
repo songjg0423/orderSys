@@ -44,7 +44,7 @@ public class OrderListQryAction implements Controller {
 		} else {
 			openid = (String)request.getSession().getAttribute("OpenId");
 		}
-		if (openid == null)openid = "oqQqVuLZrkv-T2KuLj-Q6Pc7NK_Q";
+		//if (openid == null)openid = "oqQqVuLZrkv-T2KuLj-Q6Pc7NK_Q";
 		
 		request.getSession().setAttribute("OpenId", openid);
 		Map qryMap = new HashMap();
